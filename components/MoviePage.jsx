@@ -1,13 +1,24 @@
+import { useState, useEffect } from "react";
 function MoviePage() {
-    return (
-        <div>
-            <h1>Our Movies List</h1>
-            <ul>
-                <li>Titanic</li>
-                <li>Fast and furious</li>
-                <li>The Avengers</li>
-            </ul>
-        </div>
-    );
+const [movies, setMovies] = useState([]);
+useEffect(async () => {
+const response = await fetch("api/movies");
+const movies = await response.json();
+setMovies(movies);
+}, []);
+return (
+<div>
+    <h1>Movie List</h1>
+<ul>
+{movies.map(movie => {
+return (
+<li key={movie.id}>
+{movie.title} - {movie.releaseYear}
+</li>
+);
+})}
+</ul>
+</div>
+);
 }
 export default MoviePage;
