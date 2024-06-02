@@ -19,6 +19,12 @@ export default function Home() {
             </Link>
 
             <Link className="px-3 transition hover:text-red-500 font-bold"
+            href="/customers"
+            >
+                Customers
+            </Link>
+
+            <Link className="px-3 transition hover:text-red-500 font-bold"
             href="/about"
             >
                 About
